@@ -1,3 +1,6 @@
+console.log("%c👋 Bonjour recruteur !", "font-size:20px; color: #2ecc71;");
+console.log("Vous avez trouvé le mode développeur 😉");
+
 const cursorBlue = document.querySelector('.cursor-blue');
 const cursorTransparent = document.querySelector('.cursor-transparent');
 
@@ -124,3 +127,67 @@ function showDetails(category) {
   selectedPanel.classList.add('active');
 }
 
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.main-section');
+  reveals.forEach((reveal) => {
+    const windowHeight = window.innerHeight;
+    const revealTop = reveal.getBoundingClientRect().top;
+    const revealPoint = 100;
+    if (revealTop < windowHeight - revealPoint) {
+      reveal.classList.add('active');
+    } else {
+      reveal.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+const titles = [
+  "Bienvenue ", "Welcome", "Bienvenido", "Willkommen", "Benvenuto", 
+  "Bem-vindo", "Welkom", "欢迎", "ようこそ", 
+  "환영합니다", "स्वागत है", "ยินดีต้อนรับ", "مرحبًا",
+  "Karibu", "Barka da zuwa", "እንኳን ደህና መጣችሁ",
+  "Sumaq hamuy", "Pialli", "ᓄᑖᖅᑎᐅᕙᖏᑦ", "Добро пожаловать",
+  "Witamy", "Bun venit", "Tervetuloa", "Välkommen"
+];
+
+let index = 0;
+const container = document.getElementById('typewriter');
+const speed = 100; // 100ms par caractère
+
+async function typeWriter(text) {
+  container.classList.remove('blinking');
+  container.textContent = '';
+  
+  // Phase d'écriture
+  for (let i = 0; i <= text.length; i++) {
+    container.textContent = text.substring(0, i) + '';
+    await new Promise(res => setTimeout(res, speed));
+  }
+
+  // Remplacement du _ final
+  container.textContent = text;
+  
+  // Activation du clignotement
+  container.classList.add('blinking');
+
+  // Pause de 2 secondes
+  await new Promise(res => setTimeout(res, 2000));
+
+  // Désactivation du clignotement
+  container.classList.remove('blinking');
+
+  // Phase d'effacement
+  for (let i = text.length; i >= 0; i--) {
+    container.textContent = text.substring(0, i) + '';
+    await new Promise(res => setTimeout(res, speed/2));
+  }
+
+  // Prochain titre
+  index = (index + 1) % titles.length;
+  typeWriter(titles[index]);
+}
+
+// Démarrer l'animation
+typeWriter(titles[0]);
