@@ -516,6 +516,7 @@ overflow: hidden;
     background: rgb(184, 211, 216);
     animation: none;
     border-radius: 234px;
+    margin: 10px;
   }
 }
   
@@ -530,6 +531,7 @@ overflow: hidden;
 
   .background{
   background-color: rgb(184, 211, 216);
+  MARGIN: 10px;
   }
   
   .category-card:hover {
@@ -549,6 +551,7 @@ overflow: hidden;
   }
   .background{
     background-color: rgb(184, 211, 216);
+    margin: 10px;
     }
 
     .category-card:hover {
@@ -574,7 +577,7 @@ overflow: hidden;
 #section{
 position: relative;
 text-align: center;
-padding: 60px 0 100px;
+padding: 60px 0 50px;
 }
 
 @media screen and (max-width:425px) {
@@ -584,7 +587,7 @@ padding: 60px 0 100px;
 }
 
 .background-tit{
-  font-size: 43px;
+  font-size: 0px;
   transform: translate(0%, 110%);
 }
 }
@@ -596,7 +599,7 @@ padding: 60px 0 100px;
   }
 
   .background-tit{
-    font-size: 60px;
+    font-size: 0px;
     transform: translate(0%, 90%);
   }
 
@@ -605,14 +608,14 @@ padding: 60px 0 100px;
 @media screen and (min-width:800px)and (max-width:1024px) {
   .background-tit{
     font-size: 100px;
-    transform: translate(3%, 80%);
+    transform: translate(0%, 80%);
   }
 }
 
 @media screen and (min-width:1025px){
 .background-tit{
   font-size: 100px;
-  transform: translate(3%, 80%);
+  transform: translate(0%, 80%);
 }
 }
 
@@ -671,7 +674,7 @@ padding: 60px 0 100px;
   height: 100%;
   background-color: rgb(124, 166, 174);
   width: 0; /* Largeur initiale à 0 */
-  transition: width 1.5s ease-out; /* Animation plus douce */
+  transition: width 3.5s cubic-bezier(0, 0.7, 1, 0.98); /* Animation plus douce */
 }
 
 /*--------------------------------------------------------à changer---------------------------------------------------------->*/
@@ -707,80 +710,6 @@ padding: 60px 0 100px;
   pointer-events: none;
   transform: translate(-50%, -50%); /* Centre le cercle */
 }
-    .modal {
-        display: none; /* Cachée par défaut */
-        position: fixed;
-        overflow-x:hidden;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(69, 69, 69, 0.6); 
-        backdrop-filter: blur(10px);
-        color: white;
-      }
-      
-      /* Contenu principal de la modale */
-      .modal-content {
-        display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-      }
-      
-      /* Bouton de fermeture */
-      .close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 45px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      
-      .close:hover {
-        color: rgb(0, 0, 0);
-      }
-      
-      /* Contenu structuré de la modale */
-      .modal-body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-      
-      /* Rectangle gris dans la modale */
-      .modal-box {
-        width: 850px;
-        height: 500px;
-        border: 2px solid black;
-        border-radius: 5px;
-        background: url('gris.jpeg');
-      }
-      
-      /* Texte à droite */
-      .modal-text {
-        text-align: center;
-        color: rgb(0, 0, 0);
-      }
-      
-      .modal-text h2 {
-        font-size: 34px;
-        margin-bottom: 10px;
-      }
-      
-      .modal-text p {
-        margin: 5px 0;
-        font-size: 24px;
-      }
-
 /*-------------------------------------presentation------------------------------*/
 .presentation {
   position: relative;
@@ -1063,7 +992,7 @@ height: 50%;
 
 /* Section CV */
 .main-section {
-  transform: translateY(30px) rotate(5deg) scale(0.9);
+  transform: translateY(30px) rotate(0deg) scale(0.9);
   opacity: 0;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
@@ -1295,5 +1224,6 @@ transform: translateY(0) rotate(0) scale(1);
 .social-links a:hover {
     color: rgb(124, 166, 174);
 }
+
 
 
