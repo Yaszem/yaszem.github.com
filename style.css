@@ -670,8 +670,8 @@ padding: 60px 0 100px;
 .progress {
   height: 100%;
   background-color: rgb(124, 166, 174);
-  width: 0; /* La largeur initiale est 0 */
-  transition: width 2s ease; /* L'animation de remplissage */
+  width: 0; /* Largeur initiale à 0 */
+  transition: width 1.5s ease-out; /* Animation plus douce */
 }
 
 /*--------------------------------------------------------à changer---------------------------------------------------------->*/
