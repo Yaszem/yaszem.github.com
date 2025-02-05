@@ -102,14 +102,25 @@ document.getElementById('contact-form').addEventListener('submit', function (eve
   alert(maintenanceMessage); // Alerte utilisateur
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const progressBars = document.querySelectorAll(".progress");
+// Observer pour déclencher l'animation des progress bars
+const progressBars = document.querySelectorAll(".progress");
+const skillsSection = document.getElementById('section');
 
-  progressBars.forEach(bar => {
-    const targetWidth = bar.getAttribute("data-progress");
-    bar.style.width = `${targetWidth}%`;
-  });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            progressBars.forEach(bar => {
+                const targetWidth = bar.getAttribute("data-progress");
+                bar.style.width = `${targetWidth}%`;
+            });
+            observer.disconnect(); // Arrête d'observer après la première activation
+        }
+    });
+}, {
+    threshold: 0.5 // Déclenche quand 50% de la section est visible
 });
+
+observer.observe(skillsSection);
 
 // Sélection des éléments
 const openModal = document.getElementById('openModal');
@@ -117,14 +128,16 @@ const closeModal = document.getElementById('closeModal');
 const modal = document.getElementById('modal');
 
 
+// Modifier la fonction showDetails
 function showDetails(category) {
-  // Hide all panels
   const panels = document.querySelectorAll('.details-panel');
-  panels.forEach(panel => panel.classList.remove('active'));
-
-  // Show the selected panel
-  const selectedPanel = document.getElementById(category);
-  selectedPanel.classList.add('active');
+  panels.forEach(panel => {
+    if (panel.id === category) {
+      panel.classList.add('active');
+    } else {
+      panel.classList.remove('active');
+    }
+  });
 }
 
 function revealOnScroll() {
